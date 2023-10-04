@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="17.586" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-10-04T11:37:56" tests="0" file="cypress\e2e\cucumber\tests\loginJourney.feature" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Login Journey" timestamp="2023-10-04T11:37:56" tests="1" time="17.584" failures="0">
+    <testcase name="Login Journey Login" time="15.198" classname="Login">
+    </testcase>
+  </testsuite>
+</testsuites>
