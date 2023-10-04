@@ -2,6 +2,7 @@ import {Before, Given, When, Then} from 'cypress-cucumber-preprocessor/steps';
 import bar from '../../pages/topBar';
 import generic from '../../pages/genericObjects';
 import profile from '../../pages/profilePage';
+import offer from '../../pages/premiumOffer';
 
 Before(() => {
   cy.intercept('*', { log: false });
@@ -37,4 +38,8 @@ Then('the preimium offer screen should show', () => {
 
 Then('the Log in button is shown', () => {
   bar.loginButton().should('contain', 'Log in / Register');
+});
+
+Then('the premium offer pop up is shown', () => {
+  offer.close();
 });

@@ -30,7 +30,8 @@ Then('the user is sent to {string}', (address) => {
 
 When('the user enters a valid username and valid password', (datatable) => {
   datatable.hashes().forEach((element) => {
-    login.enterCredentials(element.username, element.password);
+    login.enterEmail(element.username);
+    login.enterPassword(element.password);
   });
 });
 
