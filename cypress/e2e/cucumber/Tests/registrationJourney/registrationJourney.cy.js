@@ -43,7 +43,7 @@ When('the user enters a unique registration email address', () => {
     cy.log(global.emailIterator);
     suffix = parseInt(global.emailIterator) + 1;
     registration.enterEmail('cypress.interview' + suffix + '@gmail.com');
-    cy.writeFile('cypress/e2e/cucumber/tests/global.json', {"emailIterator": suffix});
+    cy.writeFile('cypress/e2e/cucumber/tests/global.json', {'emailIterator': suffix});
   })
 });
 
@@ -71,6 +71,46 @@ When('the user clicks the Opt-out-policy', () => {
 
 When('the user clicks the logout button', () => {
   profile.logoutButton().click();
+});
+
+When('the user enters a resgistration firstname with special characters', () => {
+  registration.enterFirstName('Cy^press');
+  cy.wait('@verifyData');
+});
+
+When('the user enters a resgistration lastname with special characters', () => {
+  registration.enterLastName('Int&rview');
+  cy.wait('@verifyData');
+});
+
+When('the user enters an invalid registration password', (datatable) => {
+  datatable.hashes().forEach((element) => {
+    registration.enterPassword(element.password);
+    cy.wait('@verifyData');
+    registration.errorMessages().should('contain', 'Must be at least 6 characters, include an upper and lower case character and a number');
+  });
+  registration.clearEmail();
+});
+
+When('the user enters an existing registration email address', () => {
+  registration.enterEmail('cypress.test@gmail.com');
+  cy.wait('@verifyData');
+});
+
+When('the user enters the correct password', () => {
+  login.enterPassword('Qwerty12345');
+});
+
+When('the user clicks the Login button', () => {
+  login.submitButton().click();
+});
+
+When('the user clicks the account link', () => {
+  thankyou.yourAccountLink().click();
+});
+
+Then('the thankyou message is displayed', () => {
+  thankyou.thanyouMessage().should('contain', 'Thanks cypress for completing your registration. A confirmation email from The Independent has been sent to cypress.interview5@gmail.com. Double check your spam folder just in case. You can edit your personal details and customise your preferences by accessing your account. You are currently logged into your account, click here to log out.');
 });
 
 Then('the Create My Account button is disabled', () => {
@@ -101,16 +141,6 @@ Then('the premium offer pop up is shown', () => {
   offer.close();
 });
 
-When('the user enters a resgistration firstname with special characters', () => {
-  registration.enterFirstName('Cy^press');
-  cy.wait('@verifyData');
-});
-
-When('the user enters a resgistration lastname with special characters', () => {
-  registration.enterLastName('Int&rview');
-  cy.wait('@verifyData');
-});
-
 Then('an error is shown below the firstname box', () => {
   registration.errorMessages().should('contain', 'Special characters aren’t allowed');
   registration.clearFirstName();
@@ -121,36 +151,6 @@ Then('an error is shown below the lastname box', () => {
   registration.clearLastName();
 });
 
-When('the user enters an invalid registration password', (datatable) => {
-  datatable.hashes().forEach((element) => {
-    registration.enterPassword(element.password);
-    cy.wait('@verifyData');
-    registration.errorMessages().should('contain', 'Must be at least 6 characters, include an upper and lower case character and a number');
-  });
-  registration.clearEmail();
-});
-
-When('the user enters an existing registration email address', () => {
-  registration.enterEmail('cypress.test@gmail.com');
-  cy.wait('@verifyData');
-});
-
 Then('a password box is shown', () => {
   login.passwordBox().should('be.visible');
-});
-
-When('the user enters the correct password', () => {
-  login.enterPassword('Qwerty12345');
-});
-
-When('the user clicks the Login button', () => {
-  login.submitButton().click();
-});
-
-Then('the thankyou message is displayed', () => {
-  thankyou.thanyouMessage().should('contain', 'Thanks cypress for completing your registration. A confirmation email from The Independent has been sent to cypress.interview5@gmail.com. Double check your spam folder just in case. You can edit your personal details and customise your preferences by accessing your account. You are currently logged into your account, click here to log out.');
-});
-
-When('the user clicks the account link', () => {
-  thankyou.yourAccountLink().click();
 });

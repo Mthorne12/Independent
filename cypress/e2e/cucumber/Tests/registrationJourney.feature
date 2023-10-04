@@ -2,7 +2,6 @@ Feature: Registration Journey
 
   Background: A user can go to the login page and create an account
 
-
   Scenario: Registration happy path
     Given the user navigates to 'https://www.independent.co.uk'
     When the user clicks the green agree button

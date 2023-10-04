@@ -34,7 +34,7 @@ class registrationPage{
     enterOffersPreference(offers){
         if(offers){
             cy.get('[for="form-receive-offer"]').click();
-        }
+        };
     };
 
     createMyAccountButton(){
@@ -51,7 +51,7 @@ class registrationPage{
 
     errorMessages(){
         return cy.get('.csr-error-message');
-    }
+    };
 };
 const registration = new registrationPage();
 export default registration;

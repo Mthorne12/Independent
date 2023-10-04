@@ -5,7 +5,7 @@ class topBar{
 
     userButton(){
         return cy.get('#open-drawer-button');
-    }
+    };
 };
 const bar = new topBar();
 export default bar;
