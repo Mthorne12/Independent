@@ -1,7 +1,7 @@
 class loginPage{
     enterCredentials(username, password){
-        cy.get('#login-form-email').type(username);
-        cy.get('#login-form-password').type(password);
+        cy.get('#login-form-email').type(username, { force: true });
+        cy.get('#login-form-password').type(password, { force: true });
     };
 
     submitButton(){

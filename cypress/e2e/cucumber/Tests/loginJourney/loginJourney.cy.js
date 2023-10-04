@@ -4,6 +4,10 @@ import bar from '../../pages/topBar';
 import login from '../../pages/loginPage';
 import generic from '../../pages/genericObjects';
 
+Before(() => {
+  cy.intercept('*', { log: false });
+});
+
 Given('the user navigates to {string}', (url) => {
   generic.navigate(url);
 });
