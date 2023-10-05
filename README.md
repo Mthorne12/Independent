@@ -19,7 +19,9 @@ If this has worked you should be able to run the open cypress script (`npm run o
 The test suite can be run in one of three ways:
 * Running the cypress UI using the `open-cypress` script: this will allow you to run the spec files individually and interact with the results once the run completes as well as allowing you to specify a browser to run in.
 * Running the suite in the UI using `run-ui` script: this will run each feature file in a new browser letting you watch the run happen and interact with the steps once the run has finished.
-* Running the suit in the command line using the `run-cmd` script: this will run each feature file outputting which scenarios have passed or failed as it goes and generating screenshots of any failures (an example is shown in `cypress\screenshots\registrationJourney.feature\` which is also referenced in the difficulties faced section below).
+* Running the suit in the command line using the `run-cmd` script: this will run each feature file outputting which scenarios have passed or failed as it goes and generating screenshots of any failures (an example is shown in `cypress\screenshots\registrationJourney.feature\` from a valid failure i encountered which is also referenced in the difficulties faced section below).
+
+Note: when the run fails on any tests (which the first registration test is likely to do due to the captcha issue mentioned below), npm will show errors below the test report.
 
 ## Difficulties faced
 * iframes are difficult to interact with using cypress and require the chromeWebSecurity attribute to be turned off. Doing so can cause issues for certain tests but within the scope of this test suite it had no adverse effects.
