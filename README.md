@@ -11,7 +11,7 @@
 After cloning the repository, open the project in visual code (or navigate to its root folder in a command  line window)
 Note: you may need to run visual studio code (or your command line window) as an administrator to avoid setup issues
 
-Run the dependencies script (npm run dependencies or just `npm ci`) to ensure all dependencies of the project are present.
+Run the dependencies script (npm run dependencies or `npm install -g npm@6 & ci`) to ensure all dependencies of the project are present.
 
 If this has worked you should be able to run the open cypress script (`npm run open-cypress`) to open cypress and run individual feature files.
 
@@ -32,3 +32,4 @@ The test suite can be run in one of three ways:
 * The "premium offer" popup appears after logging in or accessing the registration page unpredictably and interferes  with the flow of the test. I made some attempts to include it in the test but the only reliable way of doing this seemed to be by using a generic timed wait on page load (this is something i wouldn't normally do as it may not be reliable on different environments) as i couldn't track down a specific request to wait for and waiting for it to appear rarely worked (possibly due to it being an iframe).
 * Iterating the email address for the registration journey was relatively easy to implement however it would be a better approach to automatically clear the users created out between runs rather than creating new ones each time.
 * A captcha (which does not exist on the registration page as far as i can see) blocked creating users at a certain point which meant the last few parts couldn't be run locally to check they were fully working. (the failure screenshot in `cypress\screenshots\registrationJourney.feature\` shows the issue I'm referring to)
+* Cypress dependencies don't install correctly on certain versions of npm so I've put a part in the dependency script to ensure a working version of npm before it tries to install the other dependencies.

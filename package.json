@@ -4,7 +4,7 @@
   "description": "Dependencies for the Cypress suite testing the login for the Independent website",
   "main": "index.js",
   "scripts": {
-    "dependencies": "npm ci",
+    "dependencies": "npm install -g npm@6 & ci",
     "open-cypress": "cypress open --e2e",
     "run-cmd": "cypress run",
     "run-ui": "cypress run --headed --no-exit"
