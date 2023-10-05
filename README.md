@@ -11,7 +11,7 @@
 After cloning the repository, open the project in visual code (or navigate to its root folder in a command  line window)
 Note: you may need to run visual studio code (or your command line window) as an administrator to avoid setup issues
 
-Run the dependencies script (npm run dependencies or `npm install -g npm@6 & ci`) to ensure all dependencies of the project are present.
+Run the dependencies script (npm run dependencies or `npm install -g npm@6` then `npm ci`) to ensure all dependencies of the project are present.
 
 If this has worked you should be able to run the open cypress script (`npm run open-cypress`) to open cypress and run individual feature files.
 
