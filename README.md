@@ -1,6 +1,7 @@
 # Independent
 
 ## Prerequisites
+[git](https://git-scm.com/)
 [Node.js (18.18.0)](https://nodejs.org/en)
 
 ### Recommended
